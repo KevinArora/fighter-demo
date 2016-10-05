@@ -1,0 +1,19 @@
+body {
+  background: url(img/bg.gif) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#player2 {
+  width:112px;
+  height:118px;
+  background:url(img/luffy/luffystand.gif);
+  background-size:cover;
+  display:inline-block;
+  position:absolute;
+  bottom:5px;
+
+
+
+}
