@@ -14,18 +14,19 @@ $(document).ready(function() {
     playerTwo.css('left', pos);
 
   function p2Moveleft(){
-    playerTwo.css('width','100px');
-   playerTwo.css('height','147px');
-    playerTwo.css('background','url(img/luffy/luffywalk.gif)');
+    playerTwo.css('width','180px');
+    playerTwo.css('height','300px');
+    playerTwo.css('@-webkit-animation','walkback .8s steps(8) infinite')
+    playerTwo.css('background','url(img/player2/luffywalk.png)');
      p2pos = playerTwo.offset().left;
 
     playerTwo.css('left',p2pos-8);
   }
   function p2Moveright(){
-     playerTwo.css('width','100px');
-   playerTwo.css('height','147px');
- playerTwo.css('bottom','5px')
-   playerTwo.css('background','url(img/luffy/luffywalk.gif)');
+    playerTwo.css('width','180px');
+    playerTwo.css('height','300px');
+    playerTwo.css('@-webkit-animation','walkback .8s steps(8) infinite')
+    playerTwo.css('background','url(img/player2/luffywalk.png)');
     p2pos = playerTwo.offset().left;
     playerTwo.css('left',p2pos+8);
   }
@@ -38,9 +39,10 @@ function p2Jump(){
 
 }
 function p2crouch(){
-   playerTwo.css('width','93px');
-   playerTwo.css('height','111px');
-   playerTwo.css('background','url(img/luffy/luffycrouch.gif)');
+   playerTwo.css('width','186px');
+   playerTwo.css('height','220px');
+   playerTwo.css('@-webkit-animation','crouch .8s steps(3)')
+   playerTwo.css('background','url(img/player2/luffycrouch.png)');
 }
 
 
@@ -63,10 +65,10 @@ function p2crouch(){
       }
   }
     function p2reset(e){
-      playerTwo.css('width','112px');
-      playerTwo.css('height','118px');
-
-      playerTwo.css('background','url(img/luffy/luffystand.gif)');
+      playerTwo.css('width','224px');
+      playerTwo.css('height','240px');
+      playerTwo.css('@-webkit-animation','stand .6s steps(4) infinite')
+      playerTwo.css('background','url(img/player2/luffystand.png)');
 
     }
 

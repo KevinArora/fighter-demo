@@ -5,15 +5,46 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+.walk{
+
+}
+
 #player2 {
-  width:112px;
-  height:118px;
-  background:url(img/luffy/luffystand.gif);
-  background-size:cover;
+  width:224px;
+  height:240px;
+  background:url(img/player2/luffystand.png);
+  /*background-size:cover;*/
   display:inline-block;
   position:absolute;
   bottom:5px;
-
-
-
+  -webkit-animation: stand .6s steps(4) infinite;
 }
+  @-webkit-keyframes stand {
+    0% 100%{
+        width:224px;
+        height:240px;
+        background:url(img/player2/luffystand.png);
+    }
+    from {background-position:0px;}
+    to{background-position:-904px;}
+  }
+  @-webkit-keyframes walkback {
+    0% 100%{width:204px, height:300px; background:url(img/player2/luffywalk.png);}
+    from{background-position: 0px;}
+    to{background-position:-1632px;}
+
+  }
+  @-webkit-keyframes dash {
+    0% {width:298px;height:260px;background:url(img/player2/luffyrun.png); }
+    from{background-position:0px;}
+    to{background-position:-1788px;}
+
+  }
+  @-webkit-keyframes crouch {
+    0% 100%{}
+    from{background-position:0px}
+    to{background-position: -564px}
+  }
+
+
+
