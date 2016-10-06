@@ -20,16 +20,16 @@ $(document).ready(function() {
   function p2Moveleft(){
     playerTwo.css('width','180px');
     playerTwo.css('height','300px');
-    playerTwo.css('@-webkit-animation','walkback .8s steps(8) infinite')
+    playerTwo.css('animation','walkback .8s steps(8) infinite')
     playerTwo.css('background','url(img/player2/luffywalk.png)');
     // playerTwo.addClass('walk')
     p2pos = playerTwo.offset().left;
-    playerTwo.css('left',p2pos-8);
+    playerTwo.css('left',p2pos-10);
   }
   function p2Moveright(){
     playerTwo.css('width','180px');
     playerTwo.css('height','300px');
-    playerTwo.css('@-webkit-animation','walkback .8s steps(8) infinite')
+    playerTwo.css('animation','walkback .8s steps(8) infinite')
     playerTwo.css('background','url(img/player2/luffywalk.png)');
     p2pos = playerTwo.offset().left;
     playerTwo.css('left',p2pos+8);
@@ -45,19 +45,34 @@ function p2Jump(){
 function p2crouch(){
    playerTwo.css('width','186px');
    playerTwo.css('height','220px');
-   playerTwo.css('@-webkit-animation','crouch .8s steps(3)')
+   playerTwo.css('animation','crouch .8s steps(4) infinite')
    playerTwo.css('background','url(img/player2/luffycrouch.png)');
+   // playerTwo.css('background-size','100%');
 }
 function p1Moveleft(){
     playerOne.css('width','162px');
     playerOne.css('height','300px');
-    playerOne.css('@-webkit-animation','pOnewalk .6s steps(8) infinite')
+    playerOne.css('animation','pOnewalk .6s steps(8) infinite')
     playerOne.css('background','url(img/player1/sanjiwalk.png')
-
+    p1pos = playerOne.offset().left;
+    playerOne.css('left',p1pos-8);
 
 }
+function p1Moveright(){
+    playerOne.css('width','162px');
+    playerOne.css('height','300px');
+    playerOne.css('animation','pOnewalk .6s steps(8) infinite')
+    playerOne.css('background','url(img/player1/sanjiwalk.png')
+    p1pos = playerOne.offset().left;
+    playerOne.css('left',p1pos+10);
 
-
+}
+function p1crouch(){
+     playerOne.css('width','124px');
+    playerOne.css('height','245px');
+    playerOne.css('animation','pOnewalk .6s steps(3) forward')
+    playerOne.css('background','url(img/player1/sanjicrouch.png')
+}
 
   function p2check(e){
       var i = e.keyCode;
@@ -78,18 +93,24 @@ function p1Moveleft(){
       if(i === 65){
         p1Moveleft();
       }
+      if(i=== 68){
+        p1Moveright();
+      }
+      if(i === 83){
+        p1crouch();
+      }
   }
     function p2reset(e){
       playerTwo.css('width','224px');
       playerTwo.css('height','240px');
-      playerTwo.css('@-webkit-animation','stand .6s steps(4) infinite')
+      playerTwo.css('animation','stand .6s steps(4) infinite')
       playerTwo.css('background','url(img/player2/luffystand.png)');
 
     }
     function P1default(e){
       playerOne.css('width','112px');
       playerOne.css('height','300px');
-      playerOne.css('@-webkit-animation','pOnestand .6s steps(8) infinite')
+      playerOne.css('animation','pOnestand .6s steps(4) infinite')
       playerOne.css('background','url(img/player1/sanjistand.png)');
     }
 
