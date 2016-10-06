@@ -45,9 +45,9 @@ function p2Jump(){
 function p2crouch(){
    playerTwo.css('width','186px');
    playerTwo.css('height','220px');
-   playerTwo.css('animation','crouch .8s steps(4) infinite')
-   playerTwo.css('background','url(img/player2/luffycrouch.png)');
-   // playerTwo.css('background-size','100%');
+   playerTwo.css('animation','crouch');
+   playerTwo.css('background','url(img/player2/luffycrouch.gif)');
+   playerTwo.css('background-size','100%');
 }
 function p1Moveleft(){
     playerOne.css('width','162px');
@@ -68,12 +68,23 @@ function p1Moveright(){
 
 }
 function p1crouch(){
-     playerOne.css('width','124px');
+    playerOne.css('width','124px');
     playerOne.css('height','245px');
-    playerOne.css('animation','pOnewalk .6s steps(3) forward')
-    playerOne.css('background','url(img/player1/sanjicrouch.png')
+    playerOne.css('animation','pOnewalk .6s steps(3) forward');
+    playerOne.css('background','url(img/player1/sanjicrouch.png');
 }
-
+function p1attack(){
+  playerOne.css('width','306px');
+  playerOne.css('height','290px');
+  playerOne.css('background','url(img/player1/sanjikick.png');
+  playerOne.css('animation','p1attack .6s steps(7) infinite');
+}
+function p2attack(){
+  playerTwo.css('width','250px');
+  playerTwo.css('height','230px');
+  playerTwo.css('animation','p2attack .6s steps(5) infinite');
+  playerTwo.css('background','url(img/player2/luffypunch.png');
+}
   function p2check(e){
       var i = e.keyCode;
       if(i === 37){
@@ -98,6 +109,12 @@ function p1crouch(){
       }
       if(i === 83){
         p1crouch();
+      }
+      if(i === 90){
+        p1attack();
+      }
+      if(i === 190){
+        p2attack();
       }
   }
     function p2reset(e){
