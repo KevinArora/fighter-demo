@@ -135,5 +135,76 @@ function p2attack(){
   $('body').keydown(p2check);
   $('body').keyup(p2reset);
   $('body').keyup(P1default);
+// this part is from http:
+// yojimbo87.github.io/2012/08/23/repeated-and-multiple-key-press-events-without-stuttering-in-javascript.html
+// it allows multiple keypresses which is pretty much the biggest bottleneck when
+// using JS to make any kind of two player game.
+function onKeyPress(callback) {
+    var keys = {},
+        keysCount = 0,
+        interval = null,
+        trackedKeys = {
+            119: true, // W
+            87: true, // w
+            115: true, // S
+            83: true, // s
+            97: true, // A
+            65: true, // a
+            100: true, // D
+            68: true, // d
+            37: true, // left arrow
+            38: true, // up arrow
+            39: true, // right arrow
+            40: true // down arrow
+        };
 
+    $(document).keydown(function (event) {
+        var code = event.which;
+
+        if (trackedKeys[code]) {
+            if (!keys[code]) {
+                keys[code] = true;
+                keysCount++;
+            }
+
+            if (interval === null) {
+                interval = setInterval(function () {
+                    var direction = '';
+
+                    // check if north or south
+                    if (keys[119] || keys[87] || keys[38]) {
+                        direction = 'n';
+                    } else if (keys[115] || keys[83] || keys[40]) {
+                        direction = 's';
+                    }
+
+                    // concat west or east
+                    if (keys[97] || keys[65] || keys[37]) {
+                        direction += 'w';
+                    } else if (keys[100] || keys[68] || keys[39]) {
+                        direction += 'e';
+                    }
+
+                    callback(direction);
+                }, 1000 / 50);
+            }
+        }
+    });
+
+    $(document).keyup(function (event) {
+        var code = event.which;
+
+        if (keys[code]) {
+            delete keys[code];
+            keysCount--;
+        }
+
+        // need to check if keyboard movement stopped
+        if ((trackedKeys[code]) && (keysCount === 0)) {
+            clearInterval(interval);
+            interval = null;
+            callback('none');
+        }
+    });
+}
 });
