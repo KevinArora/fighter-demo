@@ -11,6 +11,22 @@ height:300px;
 background:url(img/player2/luffywalk.png);
 @-webkit-animation: walkback .8s steps(8) infinite;
 }*/
+.hpbar1{
+ width:0px;
+ height:55px;
+ background-color:yellow;
+ position:absolute;
+ padding-left:450px;
+}
+.hpbar2{
+width:0px;
+height:55px;
+background-color:yellow;
+position:absolute;
+padding-left:450px;
+
+
+}
 
 #player2 {
   width:224px;
@@ -19,7 +35,7 @@ background:url(img/player2/luffywalk.png);
   /*background-size:cover;*/
   display:inline-block;
   position:absolute;
-  bottom:5px;
+  bottom:10px;
   animation:stand .6s steps(4) infinite;
 
 }
@@ -27,7 +43,7 @@ background:url(img/player2/luffywalk.png);
 #player1 {
   width:112px;
   height:300px;
-  bottom:5px;
+  bottom:10px;
   position: absolute;
   background:url(img/player1/sanjistand.png);
   animation: pOnestand .6s steps(4) infinite;
@@ -82,4 +98,9 @@ background:url(img/player2/luffywalk.png);
     0% 100%{background:url(img/player2/luffypunch.png);}
     from {background-position:0px}
     to{background-position:-1250px}
+  }
+  @keyframes p2hit{
+    0% 100%{background:url(img/player1/luffhit.png);}
+    from{background-position:0px;}
+    to{background-position:630px;}
   }

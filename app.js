@@ -1,13 +1,15 @@
 
 
 
-$(document).ready(function() {
+// $(document).ready(function() {
 
   console.log('connected');
    var playerTwo = $('#player2');
    var playerOne = $('#player1');
     var p2pos,p2top;
     var p1pos,p2top;
+    var attack,hitbox;
+    var hp=$('.hpbar2')
     // all this just determines the start point for the 2 fighters
     var width = $('body').width()/2;
     var p2width = $('#player2').width()/2;
@@ -16,6 +18,8 @@ $(document).ready(function() {
     var posa = width - p1width - 300;
     playerTwo.css('left', posb);
     playerOne.css('left',posa);
+    hp.css('left',posb);
+
 
   function p2Moveleft(){
     playerTwo.css('width','180px');
@@ -70,14 +74,17 @@ function p1Moveright(){
 function p1crouch(){
     playerOne.css('width','124px');
     playerOne.css('height','245px');
-    playerOne.css('animation','pOnewalk .6s steps(3) forward');
-    playerOne.css('background','url(img/player1/sanjicrouch.png');
+    playerOne.css('animation','crouch');
+    playerOne.css('background','url(img/player1/sanjicrouchbig.gif');
 }
 function p1attack(){
   playerOne.css('width','306px');
   playerOne.css('height','290px');
   playerOne.css('background','url(img/player1/sanjikick.png');
   playerOne.css('animation','p1attack .6s steps(7) infinite');
+  p1hitCheck(306);
+  setTimeout(p2hit,200);
+  setTimeout(P1default,800);
 }
 function p2attack(){
   playerTwo.css('width','250px');
@@ -85,37 +92,73 @@ function p2attack(){
   playerTwo.css('animation','p2attack .6s steps(5) infinite');
   playerTwo.css('background','url(img/player2/luffypunch.png');
 }
-  function p2check(e){
+function p1hitCheck(w){
+  attack = playerOne.offset().left+w;
+
+  hitbox = playerTwo.offset().left;
+   if (attack>=hitbox)console.log('hit');
+   p2hp();
+}
+function p2hit(){
+  playerTwo.css('width','210px');
+  playerTwo.css('height','230px');
+  playerTwo.css('animation','p2hit .6s steps(3) infinite');
+  playerTwo.css('background','url(img/player2/luffyhit.png');
+  setTimeout(p2reset,600);
+}
+function p2hp(){
+  var h = hp.css('padding-left');
+  h = h.slice(0,-2);
+  var hppos = hp.offset().left
+  hp.css('padding-left',(h-10)+'px');
+  hp.css('left',posb+10);
+}
+  function moveCheck(e){
       var i = e.keyCode;
       if(i === 37){
 
       p2Moveleft();
+
+
       }
       if(i === 39){
 
         p2Moveright();
+
+
       }
       if(i === 38){
         p2Jump();
+
+
       }
       if(i=== 40){
         p2crouch();
+
+
       }
       if(i === 65){
         p1Moveleft();
+
+
       }
       if(i=== 68){
         p1Moveright();
+
       }
       if(i === 83){
         p1crouch();
       }
-      if(i === 90){
+    }
+    function attackCheck(e){
+      var b = e.keyCode;
+      if(b === 90){
         p1attack();
       }
-      if(i === 190){
+      if(b === 190){
         p2attack();
       }
+
   }
     function p2reset(e){
       playerTwo.css('width','224px');
@@ -125,6 +168,7 @@ function p2attack(){
 
     }
     function P1default(e){
+
       playerOne.css('width','112px');
       playerOne.css('height','300px');
       playerOne.css('animation','pOnestand .6s steps(4) infinite')
@@ -132,79 +176,80 @@ function p2attack(){
     }
 
 
-  $('body').keydown(p2check);
-  $('body').keyup(p2reset);
-  $('body').keyup(P1default);
+   $('body').keydown(moveCheck);
+   $('body').keyup(attackCheck);
+   //$('body').keyup(p2reset);
+   //$('body').keyup(P1default);
 // this part is from http:
 // yojimbo87.github.io/2012/08/23/repeated-and-multiple-key-press-events-without-stuttering-in-javascript.html
 // it allows multiple keypresses which is pretty much the biggest bottleneck when
 // using JS to make any kind of two player game.
-function onKeyPress(callback) {
-    var keys = {},
-        keysCount = 0,
-        interval = null,
-        trackedKeys = {
-            119: true, // W
-            87: true, // w
-            115: true, // S
-            83: true, // s
-            97: true, // A
-            65: true, // a
-            100: true, // D
-            68: true, // d
-            37: true, // left arrow
-            38: true, // up arrow
-            39: true, // right arrow
-            40: true // down arrow
-        };
+// function onKeyPress(callback) {
+//     var keys = {},
+//         keysCount = 0,
+//         interval = null,
+//         trackedKeys = {
+//             119: true, // W
+//             87: true, // w
+//             115: true, // S
+//             83: true, // s
+//             97: true, // A
+//             65: true, // a
+//             100: true, // D
+//             68: true, // d
+//             37: true, // left arrow
+//             38: true, // up arrow
+//             39: true, // right arrow
+//             40: true // down arrow
+//         };
 
-    $(document).keydown(function (event) {
-        var code = event.which;
+//     $(document).keydown(function (event) {
+//         var code = event.which;
 
-        if (trackedKeys[code]) {
-            if (!keys[code]) {
-                keys[code] = true;
-                keysCount++;
-            }
+//         if (trackedKeys[code]) {
+//             if (!keys[code]) {
+//                 keys[code] = true;
+//                 keysCount++;
+//             }
 
-            if (interval === null) {
-                interval = setInterval(function () {
-                    var direction = '';
+//             if (interval === null) {
+//                 interval = setInterval(function () {
+//                     var direction = '';
 
-                    // check if north or south
-                    if (keys[119] || keys[87] || keys[38]) {
-                        direction = 'n';
-                    } else if (keys[115] || keys[83] || keys[40]) {
-                        direction = 's';
-                    }
+//                     // check if north or south
+//                     if (keys[119] || keys[87] || keys[38]) {
+//                         direction = 'n';
+//                     } else if (keys[115] || keys[83] || keys[40]) {
+//                         direction = 's';
+//                     }
 
-                    // concat west or east
-                    if (keys[97] || keys[65] || keys[37]) {
-                        direction += 'w';
-                    } else if (keys[100] || keys[68] || keys[39]) {
-                        direction += 'e';
-                    }
+//                     // concat west or east
+//                     if (keys[97] || keys[65] || keys[37]) {
+//                         direction += 'w';
+//                     } else if (keys[100] || keys[68] || keys[39]) {
+//                         direction += 'e';
+//                     }
 
-                    callback(direction);
-                }, 1000 / 50);
-            }
-        }
-    });
+//                     callback(direction);
+//                 }, 1000 / 50);
+//             }
+//         }
+//     });
 
-    $(document).keyup(function (event) {
-        var code = event.which;
+//     $(document).keyup(function (event) {
+//         var code = event.which;
 
-        if (keys[code]) {
-            delete keys[code];
-            keysCount--;
-        }
+//         if (keys[code]) {
+//             delete keys[code];
+//             keysCount--;
+//         }
 
-        // need to check if keyboard movement stopped
-        if ((trackedKeys[code]) && (keysCount === 0)) {
-            clearInterval(interval);
-            interval = null;
-            callback('none');
-        }
-    });
-}
-});
+//         // need to check if keyboard movement stopped
+//         if ((trackedKeys[code]) && (keysCount === 0)) {
+//             clearInterval(interval);
+//             interval = null;
+//             callback('none');
+//         }
+//     });
+// }
+// });
