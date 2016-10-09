@@ -4,22 +4,38 @@
 // $(document).ready(function() {
 
   console.log('connected');
-   var playerTwo = $('#player2');
-   var playerOne = $('#player1');
-    var p2pos,p2top;
-    var p1pos,p2top;
-    var attack,hitbox;
-    var hp=$('.hpbar2')
+  var playerTwo = $('#player2');
+  var playerOne = $('#player1');
+  var p2pos,p2top;
+  var p1pos,p2top;
+  var attack,hitbox;
+  var hp=$('.hpbar2')
     // all this just determines the start point for the 2 fighters
-    var width = $('body').width()/2;
-    var p2width = $('#player2').width()/2;
-    var p1width = $('#player1').width()/2;
-    var posb = width + p2width;
-    var posa = width - p1width - 300;
-    playerTwo.css('left', posb);
-    playerOne.css('left',posa);
-    hp.css('left',posb);
+  var width = $('body').width()/2;
+  var p2width = $('#player2').width()/2;
+  var p1width = $('#player1').width()/2;
+  var posb = width + p2width;
+  var posa = width - p1width - 300;
+  playerTwo.css('left', posb);
+  playerOne.css('left',posa);
+  hp.css('left',posb+100);
+  $('.hpbarback2').css('left',posb+100);
 
+
+    function p1start(){
+      playerOne.css('width','130px');
+      playerOne.css('height','304px');
+      playerOne.css('animation','p1start .5s steps(4) infinite')
+      playerOne.css('background','url(img/player1/sanjistart.png')
+      setTimeout(P1default,1000);
+    }
+    function p2start(){
+      playerTwo.css('width','224px');
+      playerTwo.css('height','304px');
+      playerTwo.css('animation','p2start .9s steps(6) infinite')
+      playerTwo.css('background','url(img/player2/luffystart.png)');
+      setTimeout(p2reset,1000);
+    }
 
   function p2Moveleft(){
     playerTwo.css('width','180px');
@@ -86,11 +102,27 @@ function p1attack(){
   setTimeout(p1hitCheck(306),100);
   setTimeout(P1default,800);
 }
+function p1attack2(){
+  playerOne.css('width','300px');
+  playerOne.css('height','400px');
+  playerOne.css('background','url(img/player1/sanji2ndkick.png');
+  playerOne.css('animation','p1attack2 .6s steps(9) infinite');
+  setTimeout(p1hitCheck(306),100);
+  setTimeout(P1default,800);
+}
 function p2attack(){
   playerTwo.css('width','250px');
   playerTwo.css('height','230px');
   playerTwo.css('animation','p2attack .6s steps(5) infinite');
   playerTwo.css('background','url(img/player2/luffypunch.png');
+  setTimeout(p2reset,700)
+  p2hitCheck();
+}
+function p2attack2(){
+  playerTwo.css('width','480px');
+  playerTwo.css('height','220px');
+  playerTwo.css('animation','p2attack2 .6s steps(6) infinite');
+  playerTwo.css('background','url(img/player2/luffykick.png');
   setTimeout(p2reset,700)
   p2hitCheck();
 }
@@ -112,14 +144,14 @@ function p2hit(){
   setTimeout(p2reset,600);
 }
 function p2hp(){
-  var h = hp.css('padding-left');
+  var h = $('.hpbarback2').css('padding-left');
   h = h.slice(0,-2);
-  var hppos = hp.offset().left
-  hp.css('padding-left',(h-10)+'px');
-  hp.css('left',posb+10);
+  var hppos = $('.hpbarback2').offset().left
+  $('.hpbarback2').css('padding-left',(h-10)+'px');
+  // $('.hpbarback2').css('left',posb+10);
 }
 function p2hitCheck(){
-  attack = playerTwo.offset().left;
+  attack = playerTwo.offset().left -100;
   hitbox = playerOne.offset().left + playerOne.width();
     if (attack <= hitbox){
       console.log('hit');
@@ -182,7 +214,12 @@ function p1hp(){
       if(b === 190){
         p2attack();
       }
-
+      if(b===191){
+        p2attack2();
+      }
+      if(b===88){
+        p1attack2();
+      }
   }
     function p2reset(e){
       playerTwo.css('width','224px');
@@ -199,7 +236,8 @@ function p1hp(){
       playerOne.css('background','url(img/player1/sanjistand.png)');
     }
 
-
+    p1start();
+    p2start();
    $('body').keydown(moveCheck);
    $('body').keyup(attackCheck);
    //$('body').keyup(p2reset);

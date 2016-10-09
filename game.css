@@ -14,20 +14,33 @@ background:url(img/player2/luffywalk.png);
 .hpbar1{
  width:0px;
  height:55px;
- background-color:yellow;
+ background-color:red;
  position:absolute;
  padding-left:450px;
 }
 .hpbar2{
 width:0px;
 height:55px;
-background-color:yellow;
+background-color:red;
 position:absolute;
 padding-left:450px;
 
 
 }
-
+.hpbarback1{
+ width:0px;
+ height:55px;
+ background-color:yellow;
+ position:absolute;
+ padding-left:450px;
+}
+.hpbarback2{
+width:0px;
+height:55px;
+background-color:yellow;
+position:absolute;
+padding-left:450px;
+}
 #player2 {
   width:224px;
   height:240px;
@@ -101,11 +114,35 @@ padding-left:450px;
   }
   @keyframes p2hit{
     0% 100%{background:url(img/player2/luffyhit.png);}
+    10%{transform: translateX(+15px);}
     from{background-position:0px;}
     to{background-position:630px;}
+
   }
   @keyframes p1hit{
     0% 100%{background:url(img/player1/sanjihit.png);}
+    10%{transform: translateX(-25px);}
     from{background-position: -792px}
     to{background-position: 0px}
+  }
+  @keyframes p2attack2{
+    0% 100%{background:url(img/player2/luffykick2.png);}
+    30%{transform: translateX(-180px);}
+    from{background-position:0px }
+    to{background-position:-2880px }
+  }
+  @keyframes p1attack2{
+    0% 100%{background: url(img/player1/sanji2ndkick.png)}
+    from{background-position:-2916px }
+    to{background-position: 0px}
+  }
+  @keyframes p1start{
+    0% 100%{background:url(img/player1/sanjistart.png);}
+    from{background-position: -520px}
+    to{background-position: 0px}
+  }
+  @keyframes p2start{
+    0% 100%{background:url(img/player2/luffystart.png);}
+    from{background-position:0px;}
+    to{background-position:1344px;}
   }
