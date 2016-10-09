@@ -149,6 +149,9 @@
       $('.hpbarback2').css('padding-left',(h-10)+'px');
       // $('.hpbarback2').css('left',posb+10);
     }
+    function p1win(){
+      var hpleft= $('.hpbarback2').css('padding-left')
+    }
     function p2hitCheck(){
       attack = playerTwo.offset().left -100;
       hitbox = playerOne.offset().left + playerOne.width();
