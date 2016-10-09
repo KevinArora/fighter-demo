@@ -10,7 +10,7 @@
   var p1pos,p2top;
   var attack,hitbox;
   var hp=$('.hpbar2')
-    // all this just determines the start point for the 2 fighters
+    // all this just determines the start point for the 2 fighters & hp bars
   var width = $('body').width()/2;
   var p2width = $('#player2').width()/2;
   var p1width = $('#player1').width()/2;
@@ -20,6 +20,8 @@
   playerOne.css('left',posa);
   hp.css('left',posb+100);
   $('.hpbarback2').css('left',posb+100);
+  $('.hpbar1').css('left',+60);
+  $('.hpbarback1').css('left',+60);
 
 
     function p1start(){
@@ -37,139 +39,140 @@
       setTimeout(p2reset,1000);
     }
 
-  function p2Moveleft(){
-    playerTwo.css('width','180px');
-    playerTwo.css('height','300px');
-    playerTwo.css('animation','walkback .8s steps(8) infinite')
-    playerTwo.css('background','url(img/player2/luffywalk.png)');
-    // playerTwo.addClass('walk')
-    p2pos = playerTwo.offset().left;
-    playerTwo.css('left',p2pos-10);
-  }
-  function p2Moveright(){
-    playerTwo.css('width','180px');
-    playerTwo.css('height','300px');
-    playerTwo.css('animation','walkback .8s steps(8) infinite')
-    playerTwo.css('background','url(img/player2/luffywalk.png)');
-    p2pos = playerTwo.offset().left;
-    playerTwo.css('left',p2pos+8);
-  }
-function p2Jump(){
-   playerTwo.css('width','120px');
-   playerTwo.css('height','174px');
-   playerTwo.css('background','url(img/luffy/luffyjump.gif)');
-   p2top = playerTwo.offset().top;
-   playerTwo.css('top',p2top-20);
-
-}
-function p2crouch(){
-   playerTwo.css('width','186px');
-   playerTwo.css('height','220px');
-   playerTwo.css('animation','crouch');
-   playerTwo.css('background','url(img/player2/luffycrouch.gif)');
-   playerTwo.css('background-size','100%');
-}
-function p1Moveleft(){
-    playerOne.css('width','162px');
-    playerOne.css('height','300px');
-    playerOne.css('animation','pOnewalk .6s steps(8) infinite')
-    playerOne.css('background','url(img/player1/sanjiwalk.png')
-    p1pos = playerOne.offset().left;
-    playerOne.css('left',p1pos-8);
-    setTimeout(P1default,1000);
-}
-function p1Moveright(){
-    playerOne.css('width','162px');
-    playerOne.css('height','300px');
-    playerOne.css('animation','pOnewalk .6s steps(8) infinite')
-    playerOne.css('background','url(img/player1/sanjiwalk.png')
-    p1pos = playerOne.offset().left;
-    playerOne.css('left',p1pos+10);
-    setTimeout(P1default,1000);
-
-}
-function p1crouch(){
-    playerOne.css('width','124px');
-    playerOne.css('height','245px');
-    playerOne.css('animation','crouch');
-    playerOne.css('background','url(img/player1/sanjicrouchbig.gif');
-}
-function p1attack(){
-  playerOne.css('width','306px');
-  playerOne.css('height','290px');
-  playerOne.css('background','url(img/player1/sanjikick.png');
-  playerOne.css('animation','p1attack .6s steps(7) infinite');
-  setTimeout(p1hitCheck(306),100);
-  setTimeout(P1default,800);
-}
-function p1attack2(){
-  playerOne.css('width','300px');
-  playerOne.css('height','400px');
-  playerOne.css('background','url(img/player1/sanji2ndkick.png');
-  playerOne.css('animation','p1attack2 .6s steps(9) infinite');
-  setTimeout(p1hitCheck(306),100);
-  setTimeout(P1default,800);
-}
-function p2attack(){
-  playerTwo.css('width','250px');
-  playerTwo.css('height','230px');
-  playerTwo.css('animation','p2attack .6s steps(5) infinite');
-  playerTwo.css('background','url(img/player2/luffypunch.png');
-  setTimeout(p2reset,700)
-  p2hitCheck();
-}
-function p2attack2(){
-  playerTwo.css('width','480px');
-  playerTwo.css('height','220px');
-  playerTwo.css('animation','p2attack2 .6s steps(6) infinite');
-  playerTwo.css('background','url(img/player2/luffykick.png');
-  setTimeout(p2reset,700)
-  p2hitCheck();
-}
-function p1hitCheck(w){
-  attack = playerOne.offset().left+w;
-
-  hitbox = playerTwo.offset().left;
-   if (attack>=hitbox){
-    console.log('hit');
-   p2hp();
-   setTimeout(p2hit,200);
- }
-}
-function p2hit(){
-  playerTwo.css('width','210px');
-  playerTwo.css('height','230px');
-  playerTwo.css('animation','p2hit .6s steps(3) infinite');
-  playerTwo.css('background','url(img/player2/luffyhit.png');
-  setTimeout(p2reset,600);
-}
-function p2hp(){
-  var h = $('.hpbarback2').css('padding-left');
-  h = h.slice(0,-2);
-  var hppos = $('.hpbarback2').offset().left
-  $('.hpbarback2').css('padding-left',(h-10)+'px');
-  // $('.hpbarback2').css('left',posb+10);
-}
-function p2hitCheck(){
-  attack = playerTwo.offset().left -100;
-  hitbox = playerOne.offset().left + playerOne.width();
-    if (attack <= hitbox){
-      console.log('hit');
-      setTimeout(p1hit,200);
-
+    function p2Moveleft(){
+      playerTwo.css('width','180px');
+      playerTwo.css('height','300px');
+      playerTwo.css('animation','walkback .8s steps(8) infinite')
+      playerTwo.css('background','url(img/player2/luffywalk.png)');
+      // playerTwo.addClass('walk')
+      p2pos = playerTwo.offset().left;
+      playerTwo.css('left',p2pos-10);
     }
-}
-function p1hit(){
-  playerOne.css('width','198px');
-  playerOne.css('height','300px');
-  playerOne.css('animation','p1hit .6s steps(4) infinite');
-  playerOne.css('background','url(img/player1/sanjihit.png');
-  setTimeout(P1default,500);
-}
-function p1hp(){
+    function p2Moveright(){
+      playerTwo.css('width','180px');
+      playerTwo.css('height','300px');
+      playerTwo.css('animation','walkback .8s steps(8) infinite')
+      playerTwo.css('background','url(img/player2/luffywalk.png)');
+      p2pos = playerTwo.offset().left;
+      playerTwo.css('left',p2pos+8);
+    }
+    function p2Jump(){
+      playerTwo.css('width','120px');
+      playerTwo.css('height','174px');
+      playerTwo.css('background','url(img/luffy/luffyjump.gif)');
+      p2top = playerTwo.offset().top;
+      playerTwo.css('top',p2top-20);
+    }
+    function p2crouch(){
+      playerTwo.css('width','186px');
+      playerTwo.css('height','220px');
+      playerTwo.css('animation','crouch');
+      playerTwo.css('background','url(img/player2/luffycrouch.gif)');
+      playerTwo.css('background-size','100%');
+    }
+    function p1Moveleft(){
+      playerOne.css('width','162px');
+      playerOne.css('height','300px');
+      playerOne.css('animation','pOnewalk .6s steps(8) infinite')
+      playerOne.css('background','url(img/player1/sanjiwalk.png')
+      p1pos = playerOne.offset().left;
+      playerOne.css('left',p1pos-8);
+      setTimeout(P1default,1000);
+    }
+    function p1Moveright(){
+      playerOne.css('width','162px');
+      playerOne.css('height','300px');
+      playerOne.css('animation','pOnewalk .6s steps(8) infinite')
+      playerOne.css('background','url(img/player1/sanjiwalk.png')
+      p1pos = playerOne.offset().left;
+      playerOne.css('left',p1pos+10);
+      setTimeout(P1default,1000);
+    }
+    function p1crouch(){
+      playerOne.css('width','124px');
+      playerOne.css('height','245px');
+      playerOne.css('animation','crouch');
+      playerOne.css('background','url(img/player1/sanjicrouchbig.gif');
+    }
+    function p1attack(){
+      playerOne.css('width','306px');
+      playerOne.css('height','290px');
+      playerOne.css('background','url(img/player1/sanjikick.png');
+      playerOne.css('animation','p1attack .6s steps(7) infinite');
+      setTimeout(p1hitCheck(306),100);
+      setTimeout(P1default,800);
+    }
+    function p1attack2(){
+      playerOne.css('width','300px');
+      playerOne.css('height','400px');
+      playerOne.css('background','url(img/player1/sanji2ndkick.png');
+      playerOne.css('animation','p1attack2 .6s steps(9) infinite');
+      setTimeout(p1hitCheck(306),100);
+      setTimeout(P1default,800);
+    }
+    function p2attack(){
+      playerTwo.css('width','250px');
+      playerTwo.css('height','230px');
+      playerTwo.css('animation','p2attack .6s steps(5) infinite');
+      playerTwo.css('background','url(img/player2/luffypunch.png');
+      setTimeout(p2reset,700)
+      p2hitCheck();
+    }
+    function p2attack2(){
+      playerTwo.css('width','480px');
+      playerTwo.css('height','220px');
+      playerTwo.css('animation','p2attack2 .6s steps(6) infinite');
+      playerTwo.css('background','url(img/player2/luffykick.png');
+      setTimeout(p2reset,700)
+      p2hitCheck();
+    }
+    function p1hitCheck(w){
+      attack = playerOne.offset().left+w;
+      hitbox = playerTwo.offset().left;
+       if (attack>=hitbox){
+        console.log('hit');
+        p2hp();
+        setTimeout(p2hit,200);
+      }
+    }
+    function p2hit(){
+      playerTwo.css('width','210px');
+      playerTwo.css('height','230px');
+      playerTwo.css('animation','p2hit .6s steps(3) infinite');
+      playerTwo.css('background','url(img/player2/luffyhit.png');
+      setTimeout(p2reset,600);
+    }
+    function p2hp(){
+      var h = $('.hpbarback2').css('padding-left');
+      h = h.slice(0,-2);
+      var hppos = $('.hpbarback2').offset().left
+      $('.hpbarback2').css('padding-left',(h-10)+'px');
+      // $('.hpbarback2').css('left',posb+10);
+    }
+    function p2hitCheck(){
+      attack = playerTwo.offset().left -100;
+      hitbox = playerOne.offset().left + playerOne.width();
+        if (attack <= hitbox){
+          console.log('hit');
+          p1hp();
+          setTimeout(p1hit,200);
 
-}
-  function moveCheck(e){
+        }
+    }
+    function p1hit(){
+      playerOne.css('width','198px');
+      playerOne.css('height','300px');
+      playerOne.css('animation','p1hit .6s steps(4) infinite');
+      playerOne.css('background','url(img/player1/sanjihit.png');
+      setTimeout(P1default,500);
+    }
+    function p1hp(){
+      var p = $('.hpbarback1').css('padding-left');
+      p = p.slice(0,-2);
+      var hppos = $('.hpbarback1').offset().left
+      $('.hpbarback1').css('padding-left',(p-10)+'px')
+    }
+    function moveCheck(e){
       var i = e.keyCode;
       if(i === 37){
 
@@ -220,7 +223,7 @@ function p1hp(){
       if(b===88){
         p1attack2();
       }
-  }
+    }
     function p2reset(e){
       playerTwo.css('width','224px');
       playerTwo.css('height','240px');
