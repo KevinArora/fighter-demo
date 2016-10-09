@@ -100,7 +100,12 @@ padding-left:450px;
     to{background-position:-1250px}
   }
   @keyframes p2hit{
-    0% 100%{background:url(img/player1/luffhit.png);}
+    0% 100%{background:url(img/player2/luffyhit.png);}
     from{background-position:0px;}
     to{background-position:630px;}
+  }
+  @keyframes p1hit{
+    0% 100%{background:url(img/player1/sanjihit.png);}
+    from{background-position: -792px}
+    to{background-position: 0px}
   }

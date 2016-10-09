@@ -60,7 +60,7 @@ function p1Moveleft(){
     playerOne.css('background','url(img/player1/sanjiwalk.png')
     p1pos = playerOne.offset().left;
     playerOne.css('left',p1pos-8);
-
+    setTimeout(P1default,1000);
 }
 function p1Moveright(){
     playerOne.css('width','162px');
@@ -69,6 +69,7 @@ function p1Moveright(){
     playerOne.css('background','url(img/player1/sanjiwalk.png')
     p1pos = playerOne.offset().left;
     playerOne.css('left',p1pos+10);
+    setTimeout(P1default,1000);
 
 }
 function p1crouch(){
@@ -82,8 +83,7 @@ function p1attack(){
   playerOne.css('height','290px');
   playerOne.css('background','url(img/player1/sanjikick.png');
   playerOne.css('animation','p1attack .6s steps(7) infinite');
-  p1hitCheck(306);
-  setTimeout(p2hit,200);
+  setTimeout(p1hitCheck(306),100);
   setTimeout(P1default,800);
 }
 function p2attack(){
@@ -91,13 +91,18 @@ function p2attack(){
   playerTwo.css('height','230px');
   playerTwo.css('animation','p2attack .6s steps(5) infinite');
   playerTwo.css('background','url(img/player2/luffypunch.png');
+  setTimeout(p2reset,700)
+  p2hitCheck();
 }
 function p1hitCheck(w){
   attack = playerOne.offset().left+w;
 
   hitbox = playerTwo.offset().left;
-   if (attack>=hitbox)console.log('hit');
+   if (attack>=hitbox){
+    console.log('hit');
    p2hp();
+   setTimeout(p2hit,200);
+ }
 }
 function p2hit(){
   playerTwo.css('width','210px');
@@ -112,6 +117,25 @@ function p2hp(){
   var hppos = hp.offset().left
   hp.css('padding-left',(h-10)+'px');
   hp.css('left',posb+10);
+}
+function p2hitCheck(){
+  attack = playerTwo.offset().left;
+  hitbox = playerOne.offset().left + playerOne.width();
+    if (attack <= hitbox){
+      console.log('hit');
+      setTimeout(p1hit,200);
+
+    }
+}
+function p1hit(){
+  playerOne.css('width','198px');
+  playerOne.css('height','300px');
+  playerOne.css('animation','p1hit .6s steps(4) infinite');
+  playerOne.css('background','url(img/player1/sanjihit.png');
+  setTimeout(P1default,500);
+}
+function p1hp(){
+
 }
   function moveCheck(e){
       var i = e.keyCode;
