@@ -93,7 +93,7 @@ padding-left:450px;
     to{background-position:0px;}
   }
   @keyframes pOnewalk{
-  0% 100%{background:url(img/player1/sanjiwalk.png);}
+  0% 100%{background:url(img/player1/newsanjiwalk.png);}
   from{background-position: -1296px}
   to{background-position: 0px}
   }

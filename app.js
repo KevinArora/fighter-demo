@@ -133,6 +133,7 @@
         console.log('hit');
         p2hp();
         setTimeout(p2hit,200);
+        p1win();
       }
     }
     function p2hit(){
@@ -151,6 +152,12 @@
     }
     function p1win(){
       var hpleft= $('.hpbarback2').css('padding-left')
+      hpleft= (hpleft.slice(0,-2))*1;
+      if( hpleft <= 0){
+        $('.hpbar2').hide();
+        $('.hpbarback2').hide();
+      }
+
     }
     function p2hitCheck(){
       attack = playerTwo.offset().left -100;
