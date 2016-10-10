@@ -25,14 +25,14 @@
   $('.hpbarback1').css('left',+62);
 
     //cool start game poses, all about that immersion
-    function p1start(){
+    function p1start() {
       playerOne.css('width','130px');
       playerOne.css('height','304px');
       playerOne.css('animation','p1start .5s steps(4) infinite')
       playerOne.css('background','url(img/player1/sanjistart.png')
       setTimeout(P1default,1000);
     }
-    function p2start(){
+    function p2start() {
       playerTwo.css('width','224px');
       playerTwo.css('height','304px');
       playerTwo.css('animation','p2start .9s steps(6) infinite')
@@ -40,7 +40,7 @@
       setTimeout(p2reset,1000);
     }
     // some basic movement for player 2
-    function p2Moveleft(){
+    function p2Moveleft() {
       playerTwo.css('width','180px');
       playerTwo.css('height','300px');
       playerTwo.css('animation','walkback .8s steps(8) infinite')
@@ -49,7 +49,7 @@
       p2pos = playerTwo.offset().left;
       playerTwo.css('left',p2pos-20);
     }
-    function p2Moveright(){
+    function p2Moveright() {
       playerTwo.css('width','180px');
       playerTwo.css('height','300px');
       playerTwo.css('animation','walkback .8s steps(8) infinite')
@@ -66,7 +66,7 @@
     //   p2top = playerTwo.offset().top;
     //   playerTwo.css('top',p2top-20);
     // }
-    function p2crouch(){
+    function p2crouch() {
       playerTwo.css('width','186px');
       playerTwo.css('height','220px');
       playerTwo.css('animation','crouch');
@@ -74,7 +74,7 @@
       playerTwo.css('background-size','100%');
     }
     //basic movement for player 1
-    function p1Moveleft(){
+    function p1Moveleft() {
       playerOne.css('width','162px');
       playerOne.css('height','300px');
       playerOne.css('animation','pOnewalk .6s steps(8) infinite')
@@ -83,7 +83,7 @@
       playerOne.css('left',p1pos-8);
       setTimeout(P1default,1000);
     }
-    function p1Moveright(){
+    function p1Moveright() {
       playerOne.css('width','162px');
       playerOne.css('height','300px');
       playerOne.css('animation','pOnewalk .6s steps(8) infinite')
@@ -92,14 +92,14 @@
       playerOne.css('left',p1pos+20);
       setTimeout(P1default,1000);
     }
-    function p1crouch(){
+    function p1crouch() {
       playerOne.css('width','124px');
       playerOne.css('height','245px');
       playerOne.css('animation','crouch');
       playerOne.css('background','url(img/player1/sanjicrouchbig.gif');
     }
     // both of player 1's attacks
-    function p1attack(){
+    function p1attack() {
       playerOne.css('width','306px');
       playerOne.css('height','290px');
       playerOne.css('background','url(img/player1/sanjikick.png');
@@ -107,7 +107,7 @@
       setTimeout(p1hitCheck(306),100);
       setTimeout(P1default,800);
     }
-    function p1attack2(){
+    function p1attack2() {
       playerOne.css('width','300px');
       playerOne.css('height','400px');
       playerOne.css('background','url(img/player1/sanji2ndkick.png');
@@ -116,7 +116,7 @@
       setTimeout(P1default,800);
     }
     //both of player 2's attacks
-    function p2attack(){
+    function p2attack() {
       playerTwo.css('width','250px');
       playerTwo.css('height','230px');
       playerTwo.css('animation','p2attack .6s steps(5) infinite');
@@ -124,7 +124,7 @@
       setTimeout(p2reset,700)
       p2hitCheck();
     }
-    function p2attack2(){
+    function p2attack2() {
       playerTwo.css('width','480px');
       playerTwo.css('height','220px');
       playerTwo.css('animation','p2attack2 .6s steps(6) infinite');
@@ -133,7 +133,7 @@
       p2hitCheck();
     }
     // checks if player 1's attack made contact
-    function p1hitCheck(w){
+    function p1hitCheck(w) {
       attack = playerOne.offset().left+w;
       hitbox = playerTwo.offset().left;
        if (attack>=hitbox){
@@ -147,7 +147,7 @@
       }
     }
     //triggers the stagger animation on p2 if hit
-    function p2hit(){
+    function p2hit() {
       playerTwo.css('width','210px');
       playerTwo.css('height','230px');
       playerTwo.css('animation','p2hit .6s steps(3) infinite');
@@ -155,7 +155,7 @@
       setTimeout(p2reset,600);
     }
     //subtracts p2's hp. tried to make the bar decreased left to right while pivoted but i failed
-    function p2hp(){
+    function p2hp() {
       var h = $('.hpbarback2').css('padding-left');
       h = h.slice(0,-2);
       var hppos = $('.hpbarback2').offset().left
@@ -163,7 +163,7 @@
       // $('.hpbarback2').css('left',posb+10);
     }
     //checks if p2 ran out of Hp every attack
-    function checkp1Win(){
+    function checkp1Win() {
       var hpleft= $('.hpbarback2').css('padding-left')
       hpleft= (hpleft.slice(0,-2))*1;
       if( hpleft <= 0){
@@ -174,7 +174,7 @@
     after they lost. cool falldown animation on the loser following even
     cooler win/lose poses*/
 
-    function p1win(){
+    function p1win() {
       $('body').off('keyup');
       $('body').off('keydown');
       //$('.hpbar2').hide();
@@ -186,7 +186,7 @@
       setTimeout(p2reset,1700);
       setTimeout(p2defeat,2000);
     }
-    function p2win(){
+    function p2win() {
       $('body').off('keyup');
       $('body').off('keydown');
       //$('.hpbar1').hide();
@@ -200,7 +200,7 @@
 
     }
     //next 3 just give the players poses based on either's Win, loss, or draw.
-    function p1Defeat(){
+    function p1Defeat() {
       clearInterval(time);
       $('.result').text('PLAYER 2 WINS');
       $('.portraitp1').show();
@@ -215,7 +215,7 @@
       playerOne.css('animation','p1Lose .8s steps(4)');
       playerOne.css('background','url(img/player1/sanjilose.png');
     }
-    function p2defeat(){
+    function p2defeat() {
       clearInterval(time);
       $('.result').text('PLAYER 1 WINS');
       $('.portraitp2').show();
@@ -230,7 +230,7 @@
       playerOne.css('animation','p1VictoryPose .6s steps(6)');
       playerOne.css('background','url(img/player1/sanjiwin.png');
     }
-    function draw(){
+    function draw() {
       clearInterval(time);
       $('.result').text('DRAW');
       //p2 lose animation
@@ -246,7 +246,7 @@
 
     }
     //checks if p2's attack made contact
-    function p2hitCheck(){
+    function p2hitCheck() {
       attack = playerTwo.offset().left -100;
       hitbox = playerOne.offset().left + playerOne.width();
         if (attack <= hitbox){
@@ -261,7 +261,7 @@
     }
   }
   //checks for p1's hp every hit returns true to the function above
-    function checkp2Win(){
+    function checkp2Win() {
       var hpleft= $('.hpbarback1').css('padding-left')
       hpleft= (hpleft.slice(0,-2))*1;
       if( hpleft <= 0){
@@ -269,7 +269,7 @@
       }
     }
     //stagger animation for p1
-    function p1hit(){
+    function p1hit() {
       playerOne.css('width','198px');
       playerOne.css('height','300px');
       playerOne.css('animation','p1hit .6s steps(4) infinite');
@@ -277,14 +277,14 @@
       setTimeout(P1default,500);
     }
     //reduces p1's hp upon hit
-    function p1hp(){
+    function p1hp() {
       var p = $('.hpbarback1').css('padding-left');
       p = p.slice(0,-2);
       var hppos = $('.hpbarback1').offset().left
       $('.hpbarback1').css('padding-left',(p-20)+'px')
     }
     //the game timer!
-    function gameTimer(){
+    function gameTimer() {
       $('.timer').text(timer);
       timer--;
       if (timer == 0){
@@ -293,7 +293,7 @@
 
     }
     //happens when timer runs out!
-    function timeOut(){
+    function timeOut() {
       $('body').off('keyup');
       $('body').off('keydown');
       $('.timer').hide();
@@ -308,7 +308,7 @@
     }
     /*checks for all movement inputs, keydown suits this because movement
     can vary based on players will*/
-    function moveCheck(e){
+    function moveCheck(e) {
       var i = e.keyCode;
       if(i === 37){
 
@@ -346,7 +346,7 @@
       }
     }
     //key inputs for attacks static animation times make it keypress friendly
-    function attackCheck(e){
+    function attackCheck(e) {
       var b = e.keyCode;
       if(b === 90){
         p1attack();
@@ -362,7 +362,7 @@
       }
     }
     //after any animation returns p2 to standing neutral
-    function p2reset(e){
+    function p2reset(e) {
       playerTwo.css('width','224px');
       playerTwo.css('height','240px');
       playerTwo.css('animation','stand .6s steps(4) infinite')
@@ -370,7 +370,7 @@
 
     }
     //after any animation returns p1 to standing neutral
-    function P1default(e){
+    function P1default(e) {
 
       playerOne.css('width','112px');
       playerOne.css('height','300px');
@@ -378,7 +378,7 @@
       playerOne.css('background','url(img/player1/sanjistand.png)');
     }
     //cool fight text. stolen from a real fighting game of course.
-    function fight(){
+    function fight() {
       $('.fight').hide()
     }
     //next 4 lines pretty much start the game with the fight text, timer, and cool poses

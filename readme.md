@@ -13,7 +13,13 @@ How I made my Fighting Game:
    banging out new animations and moves in a matter of minutes which as 
    a result i added one more move to each character and gave player 2
    a super good slide motion during his kick(he got short arms bro he couldnt win)
-
+    
+    i used div hp bars(1 extra behind  to simulate red for damage).
+    a timer (just setinterval,1000 with a timer--).
+    show/hide the fight and label(which's text is changed to whoever wins or draw
+    )
+    a minor photoshop work(none of this effects or is involved with functionality 
+        in any way, just some aeshetics)
 unsolved problems:
    input system- the current keyup,keypress and keydown system is super limited
    in the sense that the window can only take one at a time. i found neat 
@@ -29,3 +35,8 @@ unsolved problems:
    i dont think by design it would ever be playable by a tablet (who am i kidding)
    and most of the placements are dynamic resuting in the right placement.
    the BG however falls to pieces.
+
+    the methoid of using jqeury to change css instead of storing them in
+    classes and changing them. the result had a disgustingly long css file
+    so i elected to do the hardwork in the js file where its way earier to read
+    with the fancier colors.
