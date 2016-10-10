@@ -80,4 +80,8 @@ p{
   top:30%;
   left: 32%;
 }
+body {
+  background: url(img/landing/landingbg.jpg);
+  background-size: cover;
+}
 }
