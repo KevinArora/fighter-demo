@@ -56,13 +56,15 @@
       p2pos = playerTwo.offset().left;
       playerTwo.css('left',p2pos+8);
     }
-    function p2Jump(){
-      playerTwo.css('width','120px');
-      playerTwo.css('height','174px');
-      playerTwo.css('background','url(img/luffy/luffyjump.gif)');
-      p2top = playerTwo.offset().top;
-      playerTwo.css('top',p2top-20);
-    }
+    //TODO: FIGURE JUMPS OUT! gonna need to have the sprites switch ways too
+
+    // function p2Jump(){
+    //   playerTwo.css('width','120px');
+    //   playerTwo.css('height','174px');
+    //   playerTwo.css('background','url(img/luffy/luffyjump.gif)');
+    //   p2top = playerTwo.offset().top;
+    //   playerTwo.css('top',p2top-20);
+    // }
     function p2crouch(){
       playerTwo.css('width','186px');
       playerTwo.css('height','220px');
@@ -163,7 +165,7 @@
     function p1win(){
       $('body').off('keyup');
       $('body').off('keydown');
-      $('.hpbar2').hide();
+      //$('.hpbar2').hide();
       $('.hpbarback2').hide();
       playerTwo.css('width','310px');
       playerTwo.css('height','220px');
@@ -175,7 +177,7 @@
     function p2win(){
       $('body').off('keyup');
       $('body').off('keydown');
-      $('.hpbar1').hide();
+      //$('.hpbar1').hide();
       $('.hpbarback1').hide();
       playerOne.css('width','238px');
       playerOne.css('height','246px');
@@ -186,6 +188,7 @@
 
     }
     function p1Defeat(){
+      $('.portraitp1').show();
       //p2 win animation
       playerTwo.css('width','260px');
       playerTwo.css('height','310px');
@@ -198,6 +201,7 @@
       playerOne.css('background','url(img/player1/sanjilose.png');
     }
     function p2defeat(){
+      $('.portraitp2').show();
       //p2 lose animation
       playerTwo.css('width','200px');
       playerTwo.css('height','206px');
@@ -310,11 +314,17 @@
       playerOne.css('animation','pOnestand .6s steps(4) infinite')
       playerOne.css('background','url(img/player1/sanjistand.png)');
     }
+    function fight(){
+      $('.fight').hide()
+    }
+    setTimeout(fight,1000);
 
     p1start();
     p2start();
-   $('body').on('keydown',moveCheck);
-   $('body').on('keyup',attackCheck);
+    $('.portraitp1').hide();
+    $('.portraitp2').hide();
+    $('body').on('keydown',moveCheck);
+    $('body').on('keyup',attackCheck);
    //$('body').keyup(p2reset);
    //$('body').keyup(P1default);
 
