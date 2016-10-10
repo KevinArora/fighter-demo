@@ -201,6 +201,8 @@
     }
     //next 3 just give the players poses based on either's Win, loss, or draw.
     function p1Defeat(){
+      clearInterval(time);
+      $('.result').text('PLAYER 2 WINS');
       $('.portraitp1').show();
       //p2 win animation
       playerTwo.css('width','260px');
@@ -214,6 +216,8 @@
       playerOne.css('background','url(img/player1/sanjilose.png');
     }
     function p2defeat(){
+      clearInterval(time);
+      $('.result').text('PLAYER 1 WINS');
       $('.portraitp2').show();
       //p2 lose animation
       playerTwo.css('width','200px');
@@ -227,6 +231,8 @@
       playerOne.css('background','url(img/player1/sanjiwin.png');
     }
     function draw(){
+      clearInterval(time);
+      $('.result').text('DRAW');
       //p2 lose animation
       playerTwo.css('width','200px');
       playerTwo.css('height','206px');
@@ -377,7 +383,7 @@
     }
     //next 4 lines pretty much start the game with the fight text, timer, and cool poses
     setTimeout(fight,1000);
-    setInterval(gameTimer,1300);
+    var time= setInterval(gameTimer,1300);
     p1start();
     p2start();
     /*hides the knocked out faces which appear on the losers empty HP bar
