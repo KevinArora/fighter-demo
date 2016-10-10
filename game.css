@@ -87,19 +87,27 @@ background:url(img/player2/luffywalk.png);
   height:55px;
   background-color:red;
   position:absolute;
-  padding-left:450px;
-  border:solid 2px black;
+  padding-left:460px;
+  border:solid 2px white;
   top:70px;
   border-radius:5px;
   z-index: 1;
+}
+.timer{
+  color: black;
+  font-family: 'Press Start 2P', cursive;
+  font-size:40px;
+  position:absolute;
+  top:10%;
+  left:47%;
 }
 .hpbar2{
   width:0px;
   height:55px;
   background-color:red;
   position:absolute;
-  padding-left:450px;
-  border: solid 2px black;
+  padding-left:460px;
+  border: solid 2px white;
   top:70px;
   border-radius:5px;
   z-index:2;
@@ -109,8 +117,8 @@ background:url(img/player2/luffywalk.png);
   height:55px;
   background-color:yellow;
   position:absolute;
-  padding-left:450px;
-  top:70px;
+  padding-left:460px;
+  top:72px;
   border-radius:5px;
   z-index: 3;
 }
@@ -119,8 +127,8 @@ background:url(img/player2/luffywalk.png);
   height:55px;
   background-color:yellow;
   position:absolute;
-  padding-left:450px;
-  top:70px;
+  padding-left:460px;
+  top:72px;
   border-radius:5px;
   z-index: 3;
 }
