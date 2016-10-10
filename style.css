@@ -1,0 +1,58 @@
+body {
+  background: url(img/landing/landingbg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+button {
+  -moz-box-shadow:inset 0px 0px 0px 0px #cf866c;
+  -webkit-box-shadow:inset 0px 0px 0px 0px #cf866c;
+  box-shadow:inset 0px 0px 0px 0px #cf866c;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d94218), color-stop(1, #661b0c));
+  background:linear-gradient(to bottom, #d94218 5%, #661b0c 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d94218', endColorstr='#661b0c',GradientType=0);
+  background-color:#d94218;
+  border-radius:10px;
+  border:1px solid #942911;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:13px;
+  padding:14px 56px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #854629;
+}
+input{
+  margin-bottom: 30px
+}
+label{
+  font-family: Arial;
+}
+.parchment{
+  background:url(img/landing/wowbgparchment.png);
+  width:500px;
+  height:333px;
+  background-size: 100%;
+   margin: auto;
+  top:30%;
+  left:30%;
+  position:absolute;
+  z-index: 1;
+}
+.logo{
+  background:url(img/landing/logo.png);
+  width:250px;
+  height:250px;
+  background-size: 100%;
+  top: 12%;
+  left:38%;
+  position:absolute;
+  z-index: 2;
+}
+.boxcontent{
+  position:absolute;
+  top:30%;
+  left: 35%;
+}
