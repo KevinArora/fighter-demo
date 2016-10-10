@@ -131,9 +131,12 @@
       hitbox = playerTwo.offset().left;
        if (attack>=hitbox){
         console.log('hit');
+        var checkwin = checkp1Win();
+        if(checkwin == 'true')p1win();
+        else{
         p2hp();
         setTimeout(p2hit,200);
-        p1win();
+      }
       }
     }
     function p2hit(){
@@ -150,24 +153,83 @@
       $('.hpbarback2').css('padding-left',(h-10)+'px');
       // $('.hpbarback2').css('left',posb+10);
     }
-    function p1win(){
+    function checkp1Win(){
       var hpleft= $('.hpbarback2').css('padding-left')
       hpleft= (hpleft.slice(0,-2))*1;
       if( hpleft <= 0){
-        $('.hpbar2').hide();
-        $('.hpbarback2').hide();
+        return 'true';
       }
+    }
+    function p1win(){
+      $('body').off('keyup');
+      $('body').off('keydown');
+      $('.hpbar2').hide();
+      $('.hpbarback2').hide();
+      playerTwo.css('width','310px');
+      playerTwo.css('height','220px');
+      playerTwo.css('animation','fall');
+      playerTwo.css('background','url(img/player2/luffyfallbig.gif');
+      setTimeout(p2reset,1700);
+      setTimeout(p2defeat,2000);
+    }
+    function p2win(){
+      $('body').off('keyup');
+      $('body').off('keydown');
+      $('.hpbar1').hide();
+      $('.hpbarback1').hide();
+      playerOne.css('width','238px');
+      playerOne.css('height','246px');
+      playerOne.css('animation','p1fall');
+      playerOne.css('background','url(img/player1/sanjifallbig.gif');
+      setTimeout(P1default,2300);
+      setTimeout(p1Defeat,2600);
 
     }
+    function p1Defeat(){
+      //p2 win animation
+      playerTwo.css('width','260px');
+      playerTwo.css('height','310px');
+      playerTwo.css('animation','p2Win .8s steps(4)');
+      playerTwo.css('background','url(img/player2/luffywin.png');
+      //p1 lose animation
+      playerOne.css('width','190px');
+      playerOne.css('height','252px');
+      playerOne.css('animation','p1Lose .8s steps(4)');
+      playerOne.css('background','url(img/player1/sanjilose.png');
+    }
+    function p2defeat(){
+      //p2 lose animation
+      playerTwo.css('width','200px');
+      playerTwo.css('height','206px');
+      playerTwo.css('animation','fall');
+      playerTwo.css('background','url(img/player2/luffylosebig.gif');
+      //p1 win animation
+      playerOne.css('width','124px');
+      playerOne.css('height','304px');
+      playerOne.css('animation','p1VictoryPose .6s steps(6)');
+      playerOne.css('background','url(img/player1/sanjiwin.png');
+    }
+
     function p2hitCheck(){
       attack = playerTwo.offset().left -100;
       hitbox = playerOne.offset().left + playerOne.width();
         if (attack <= hitbox){
           console.log('hit');
-          p1hp();
-          setTimeout(p1hit,200);
+          var checkwin = checkp2Win();
+            if(checkwin == 'true')p2win();
+            else{
+              p1hp();
+              setTimeout(p1hit,200);
 
         }
+    }
+  }
+    function checkp2Win(){
+      var hpleft= $('.hpbarback1').css('padding-left')
+      hpleft= (hpleft.slice(0,-2))*1;
+      if( hpleft <= 0){
+        return 'true';
+      }
     }
     function p1hit(){
       playerOne.css('width','198px');
@@ -251,80 +313,86 @@
 
     p1start();
     p2start();
-   $('body').keydown(moveCheck);
-   $('body').keyup(attackCheck);
+   $('body').on('keydown',moveCheck);
+   $('body').on('keyup',attackCheck);
    //$('body').keyup(p2reset);
    //$('body').keyup(P1default);
-// this part is from http:
-// yojimbo87.github.io/2012/08/23/repeated-and-multiple-key-press-events-without-stuttering-in-javascript.html
-// it allows multiple keypresses which is pretty much the biggest bottleneck when
-// using JS to make any kind of two player game.
-// function onKeyPress(callback) {
-//     var keys = {},
-//         keysCount = 0,
-//         interval = null,
-//         trackedKeys = {
-//             119: true, // W
-//             87: true, // w
-//             115: true, // S
-//             83: true, // s
-//             97: true, // A
-//             65: true, // a
-//             100: true, // D
-//             68: true, // d
-//             37: true, // left arrow
-//             38: true, // up arrow
-//             39: true, // right arrow
-//             40: true // down arrow
-//         };
 
-//     $(document).keydown(function (event) {
-//         var code = event.which;
+/*TODO: following is code i plan on my own time after the project has been submitted
+and graded. this allows the machine to register multiple keypresses creating a more seamless
+experience. the code is pretty big so i chose not to use it for grading.
 
-//         if (trackedKeys[code]) {
-//             if (!keys[code]) {
-//                 keys[code] = true;
-//                 keysCount++;
-//             }
 
-//             if (interval === null) {
-//                 interval = setInterval(function () {
-//                     var direction = '';
+this part is from http:
+yojimbo87.github.io/2012/08/23/repeated-and-multiple-key-press-events-without-stuttering-in-javascript.html
+it allows multiple keypresses which is pretty much the biggest bottleneck when
+using JS to make any kind of two player game.
+function onKeyPress(callback) {
+    var keys = {},
+        keysCount = 0,
+        interval = null,
+        trackedKeys = {
+            119: true, // W
+            87: true, // w
+            115: true, // S
+            83: true, // s
+            97: true, // A
+            65: true, // a
+            100: true, // D
+            68: true, // d
+            37: true, // left arrow
+            38: true, // up arrow
+            39: true, // right arrow
+            40: true // down arrow
+        };
 
-//                     // check if north or south
-//                     if (keys[119] || keys[87] || keys[38]) {
-//                         direction = 'n';
-//                     } else if (keys[115] || keys[83] || keys[40]) {
-//                         direction = 's';
-//                     }
+    $(document).keydown(function (event) {
+        var code = event.which;
 
-//                     // concat west or east
-//                     if (keys[97] || keys[65] || keys[37]) {
-//                         direction += 'w';
-//                     } else if (keys[100] || keys[68] || keys[39]) {
-//                         direction += 'e';
-//                     }
+        if (trackedKeys[code]) {
+            if (!keys[code]) {
+                keys[code] = true;
+                keysCount++;
+            }
 
-//                     callback(direction);
-//                 }, 1000 / 50);
-//             }
-//         }
-//     });
+            if (interval === null) {
+                interval = setInterval(function () {
+                    var direction = '';
 
-//     $(document).keyup(function (event) {
-//         var code = event.which;
+                    // check if north or south
+                    if (keys[119] || keys[87] || keys[38]) {
+                        direction = 'n';
+                    } else if (keys[115] || keys[83] || keys[40]) {
+                        direction = 's';
+                    }
 
-//         if (keys[code]) {
-//             delete keys[code];
-//             keysCount--;
-//         }
+                    // concat west or east
+                    if (keys[97] || keys[65] || keys[37]) {
+                        direction += 'w';
+                    } else if (keys[100] || keys[68] || keys[39]) {
+                        direction += 'e';
+                    }
 
-//         // need to check if keyboard movement stopped
-//         if ((trackedKeys[code]) && (keysCount === 0)) {
-//             clearInterval(interval);
-//             interval = null;
-//             callback('none');
-//         }
-//     });
-// }
-// });
+                    callback(direction);
+                }, 1000 / 50);
+            }
+        }
+    });
+
+    $(document).keyup(function (event) {
+        var code = event.which;
+
+        if (keys[code]) {
+            delete keys[code];
+            keysCount--;
+        }
+
+        // need to check if keyboard movement stopped
+        if ((trackedKeys[code]) && (keysCount === 0)) {
+            clearInterval(interval);
+            interval = null;
+            callback('none');
+        }
+    });
+}*/
+//});

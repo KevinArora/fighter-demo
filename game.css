@@ -146,3 +146,22 @@ padding-left:450px;
     from{background-position:0px;}
     to{background-position:1344px;}
   }
+  @keyframes p1VictoryPose{
+    0% 100%{background:url(img/player1/sanjiwin.png);}
+    from{background-position: -744px}
+    to{background-position: 0px;}
+  }
+  @keyframes p1fall{
+    0%{left:100px;}
+    to{left:100px;}
+  }
+  @keyframes p2Win{
+    0% 100%{background:url(img/player2/luffywin.png);}
+    from{background-position:0px}
+    to{background-position:1040px}
+  }
+  @keyframes p1Lose{
+    0% 100%{}
+    from{background-position: -760px}
+    to{background-position: 0px;}
+  }
