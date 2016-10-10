@@ -395,6 +395,24 @@
    //$('body').keyup(p2reset);
    //$('body').keyup(P1default);
 
+
+   //form junk
+    function delineate(str) {
+      theLeft = str.indexOf("=") + 1;
+      theRight = str.lastIndexOf("&");
+      return(str.substring(theLeft, theRight));
+    }
+    function delineate2(str) {
+      point = str.lastIndexOf("=");
+      return(str.substring(point+1,str.length));
+    }
+  var url = window.location.search;
+
+  var player1Name = delineate(url);
+  var player2Name = delineate2(url);
+  $('.p1').text(player1Name);
+  $('.p2').text(player2Name);
+
 /*TODO: following is code i plan on my own time after the project has been submitted
 and graded. this allows the machine to register multiple keypresses creating a more seamless
 experience. the code is pretty big so i chose not to use it for grading.
