@@ -30,6 +30,24 @@ input{
 label{
   font-family: Arial;
 }
+.p1controls{
+  width:300px;
+  height:200px;
+  background-color:rgba(0,0,0,.5);
+  border-radius:15px;
+  position:absolute;
+  top:30%;
+  left:4%;
+}
+.p2controls{
+  width:300px;
+  height:200px;
+  background-color:rgba(0,0,0,.5);
+  border-radius:15px;
+  position:absolute;
+  top:30%;
+  left:70%;
+}
 .parchment{
   background:url(img/landing/wowbgparchment.png);
   width:500px;
@@ -65,6 +83,26 @@ p{
   position: absolute;
   text-shadow: 2px 2px black;
   font-family: 'Arial';
+}
+p.controls{
+  text-align:center;
+  color:white;
+  width:100%;
+  text-shadow: 2px 2px black;
+  font-family: 'Arial';
+  top:0%;
+  left:0%;
+  margin-left: 10px;
+}
+img{
+  position: absolute;
+  top:30%;
+  display:block;
+}
+.attack{
+  position:absolute;
+  top:50%;
+  left:50%;
 }
 @media only screen
   and (min-device-width: 768px)
