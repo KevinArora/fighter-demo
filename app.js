@@ -396,7 +396,7 @@
    //$('body').keyup(P1default);
 
 
-   //form junk
+   //form junk from our group lab https://github.com/krmalewski/html_forms_lab
     function delineate(str) {
       theLeft = str.indexOf("=") + 1;
       theRight = str.lastIndexOf("&");
